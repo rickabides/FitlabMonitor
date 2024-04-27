@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Warning</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #ff8c00, #ff0080), url('https://via.placeholder.com/1500x1000') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+        }
+        .alert {
+            margin-top: 20vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #00ff00; /* Neon green text */
+            border: 2px solid #ff00ff; /* Magenta border */
+            padding: 20px;
+        }
+        h1, p {
+            font-size: larger; /* Larger font sizes */
+        }
+        .timer {
+            font-size: 24px; /* Even larger font size for the timer */
+            color: #ff0; /* Bright yellow */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="alert alert-danger text-center">
+            <h1 class="display-4">Security Alert!</h1>
+            <p class="lead">Be cautious! Following QR codes without knowing their origin can expose you to malware and phishing attacks.</p>
+            <hr>
+            <p>You are being redirected to our monitoring page for further instructions.</p>
+            <p class="timer">Redirecting in <span id="countdown">10</span> seconds...</p>
+        </div>
+    </div>
+    <script>
+        var timeLeft = 10;
+        var timerElement = document.getElementById('countdown');
+        var timerId = setInterval(updateTimer, 1000);
+
+        function updateTimer() {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(timerId);
+                window.location.href = '/monitor';
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
